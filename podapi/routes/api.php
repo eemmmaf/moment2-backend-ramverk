@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PodcastController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,21 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("pods", function (){
-    return response()->json(['message' => 'GET received']);
-});
-
-Route::post("pods", function (){
-    return response()->json(['message' => 'POST received']);
-});
-
-Route::put("pods", function (){
-    return response()->json(['message' => 'PUT received']);
-});
-
-Route::delete("pods", function (){
-    return response()->json(['message' => 'DELETE received']);
-});
+//Om ett anrop kommer används Controllern PodcastController, som sköter anropet
+Route::resource('podcasts', PodcastController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
