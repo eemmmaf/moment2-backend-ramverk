@@ -56,7 +56,7 @@ class PodcastController extends Controller
         } else {
             //Skriver ut felmeddelande och felkoden 404
             return response()->json([
-                'Podcasten kunde inte hittas'
+                'Podcasten kunde inte hittas!'
             ], 404);
         }
     }
