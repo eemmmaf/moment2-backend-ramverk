@@ -1,11 +1,20 @@
 # DT193G, Moment 2 (Back-end ramverk)
-Detta repository innehåller koden för en REST-webbtjänst skapad med Laravel. REST-webbtjänsten har CRUD(Create, Read, Update och Delete)-funktionalitet. Webbtjänsten hanterar mina favorit-podcast och har publicerats med Heroku.
+Detta repository innehåller koden för en REST-webbtjänst skapad med Laravel. REST-webbtjänsten har CRUD(Create, Read, Update och Delete)-funktionalitet. Webbtjänsten hanterar mina favorit-podcast och har publicerats med Heroku. Datan presenterats i JSON-format och går att testköra. 
 
-## Länk
+## Länk till REST-webbtjänsten
 https://warm-chamber-88577.herokuapp.com/ 
 
 ## Databas
-När databasen installeras skapas tabellen Podcasts.
+När databasen installeras skapas tabellen Podcasts. Tabellen lagrar:
+* Podcastens id
+* Podcastens namn(name)
+* Vilken kategori den har, exempelvis humor/skräck(category)
+* Hur många medlemmar(members)
+* Om den kommer ut veckovis(weekly)
+* När den har lagrats(created_at)
+* När den uppdaterades senast(updated_at)
+
+
 | Tabellnamn  | Fält |
 | ------------- | ------------- |
 | id  | bigint(20)  |
@@ -17,17 +26,17 @@ När databasen installeras skapas tabellen Podcasts.
 | updated_at  | timestamp  |
 
 ## Använda webbtjänsten
-Nedan finns beskrivet hur man nå APIet på olika vis:
-| Metod  | Ändpunkt | Beskrivning
-| ------------- | ------------- | ------------- |
-| GET  | api/podcast  | Hämtar alla lagrade podcasts |
-| GET  | api/podcast/id  | Hämtar en specifik podcast med angivet ID. |
-| POST  | api/podcast  | Lagrar en ny podcast. Kräver att ett podcast-objekt skickas med. |
-| PUT  | api/podcast/id  | Uppdaterar en lagrad podcast med angivet ID. Kräver att ett podcast-objekt skickas med. |
-| DELETE  | api/podcast/id  | Raderar en podcast med angivet ID. |
+Nedan finns beskrivet hur man kan nå APIet på olika vis:
+| Metod  | Ändpunkt | Beskrivning | URL | 
+| ------------- | ------------- | ------------- | ------------- |
+| GET  | api/podcasts  | Hämtar alla lagrade podcasts | http://warm-chamber-88577.herokuapp.com/api/podcasts |
+| GET  | api/podcasts/id  | Hämtar en specifik podcast med angivet ID. | https://warm-chamber-88577.herokuapp.com/api/podcasts/2 |
+| POST  | api/podcasts  | Lagrar en ny podcast. Kräver att ett podcast-objekt skickas med. | http://warm-chamber-88577.herokuapp.com/api/podcasts |
+| PUT  | api/podcasts/id  | Uppdaterar en lagrad podcast med angivet ID. Kräver att ett podcast-objekt skickas med. | https://warm-chamber-88577.herokuapp.com/api/podcasts/2 |
+| DELETE  | api/podcasts/id  | Raderar en podcast med angivet ID. | https://warm-chamber-88577.herokuapp.com/api/podcasts/2 |
 
-Ett podcast-objekt returneras/skickas som JSON med följande struktur:
-`
+Ett podcast-objekt med id 2 returneras/skickas som JSON med följande struktur:
+```
 {
   "id": 2,
   "name": "Haveristerna",
@@ -37,8 +46,10 @@ Ett podcast-objekt returneras/skickas som JSON med följande struktur:
   "created_at": "2022-09-13T12:47:35.000000Z",
   "updated_at": "2022-09-13T14:05:55.000000Z"
 }
-`
+```
 
+## Publicering
+Webbtjänsten har publicerats med [Heroku](https://www.heroku.com/).  
 
 
 
