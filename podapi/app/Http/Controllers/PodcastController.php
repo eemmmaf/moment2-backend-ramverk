@@ -73,6 +73,14 @@ class PodcastController extends Controller
         //Hämtar podcast utifrån dess id och sparar i variabeln $podcast
         $podcast = Podcast::find($id);
 
+        //Validerar och kontrollerar att allt är ifyllt. Krav på att alla fält ska vara ifyllda
+        $request->validate([
+            'name' => 'required',
+            'category' => 'required',
+            'members' => 'required',
+            'weekly' => 'required'
+        ]);
+
         //Kontroll om variabeln $podcast inte är lika med null
         if ($podcast != null) {
             //Uppdaterar 
@@ -97,12 +105,12 @@ class PodcastController extends Controller
         $podcast = Podcast::find($id);
 
         //Kontroll om podcasten inte är lika med null
-        if($podcast != null){
+        if ($podcast != null) {
             //Tar bort podcasten
             $podcast->delete();
             //Returnerar 
             return response()->json(['Podcasten har tagits bort']);
-        }else{
+        } else {
             return response()->json(['Podcasten kunde inte hittas'], 404);
         }
     }
