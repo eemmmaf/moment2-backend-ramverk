@@ -1,64 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# DT193G, Moment 2 (Back-end ramverk)
+Detta repository innehåller koden för en REST-webbtjänst skapad med Laravel. REST-webbtjänsten har CRUD(Create, Read, Update och Delete)-funktionalitet. Webbtjänsten hanterar mina favorit-podcast och har publicerats med Heroku. Datan presenterats i JSON-format och går att testköra. 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Länk till REST-webbtjänsten
+https://warm-chamber-88577.herokuapp.com/ 
 
-## About Laravel
+## Databas
+När databasen installeras skapas tabellen Podcasts. Tabellen lagrar:
+* Podcastens id
+* Podcastens namn(name)
+* Vilken kategori den har, exempelvis humor/skräck(category)
+* Hur många medlemmar(members)
+* Om den kommer ut veckovis(weekly)
+* När den har lagrats(created_at)
+* När den uppdaterades senast(updated_at)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Tabellnamn  | Fält |
+| ------------- | ------------- |
+| id  | bigint(20)  |
+| name  | varchar(70)  |
+| category  | varchar(50)  |
+| members  | int(11)  |
+| weekly  | tinyint(1)  |
+| created_at  | timestamp  |
+| updated_at  | timestamp  |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Använda webbtjänsten
+Nedan finns beskrivet hur man kan nå APIet på olika vis:
+| Metod  | Ändpunkt | Beskrivning | URL | 
+| ------------- | ------------- | ------------- | ------------- |
+| GET  | api/podcasts  | Hämtar alla lagrade podcasts | http://warm-chamber-88577.herokuapp.com/api/podcasts |
+| GET  | api/podcasts/id  | Hämtar en specifik podcast med angivet ID. | https://warm-chamber-88577.herokuapp.com/api/podcasts/2 |
+| POST  | api/podcasts  | Lagrar en ny podcast. Kräver att ett podcast-objekt skickas med. | http://warm-chamber-88577.herokuapp.com/api/podcasts |
+| PUT  | api/podcasts/id  | Uppdaterar en lagrad podcast med angivet ID. Kräver att ett podcast-objekt skickas med. | https://warm-chamber-88577.herokuapp.com/api/podcasts/2 |
+| DELETE  | api/podcasts/id  | Raderar en podcast med angivet ID. | https://warm-chamber-88577.herokuapp.com/api/podcasts/2 |
 
-## Learning Laravel
+Ett podcast-objekt med id 2 returneras/skickas som JSON med följande struktur:
+```
+{
+  "id": 2,
+  "name": "Haveristerna",
+  "category": "Satir",
+  "members": 3,
+  "weekly": false,
+  "created_at": "2022-09-13T12:47:35.000000Z",
+  "updated_at": "2022-09-13T14:05:55.000000Z"
+}
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Publicering
+Webbtjänsten har publicerats med [Heroku](https://www.heroku.com/).  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
