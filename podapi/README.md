@@ -9,13 +9,13 @@ När databasen installeras skapas tabellen Podcasts. Tabellen lagrar:
 * Podcastens id
 * Podcastens namn(name)
 * Vilken kategori den har, exempelvis humor/skräck(category)
-* Hur många medlemmar(members)
+* Hur många medlemmar podcasten har(members)
 * Om den kommer ut veckovis(weekly)
 * När den har lagrats(created_at)
 * När den uppdaterades senast(updated_at)
 
-
-| Tabellnamn  | Fält |
+### Tabellen Podcasts
+| Namn  | Typ |
 | ------------- | ------------- |
 | id  | bigint(20)  |
 | name  | varchar(70)  |
@@ -45,6 +45,23 @@ Denna funktion tar bort en enskild podcast. En kontroll görs för att se om pod
 ## Model
 En model har skapats. Filen heter Podcast.php och den hittas i mappen Models. 
 
+## Migrering
+En migrerings-fil har skapats. I den finns funktionen _up()_. I den skapas tabellen.
+```
+ public function up()
+    {
+        Schema::create('podcasts', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 70); //Podcastens namn
+            $table->string('category', 50); //Podcastens kategori
+            $table->integer('members'); //Antal medlemmar
+            $table->boolean('weekly'); //Kommer den ut veckovis?
+            $table->timestamps();
+        });
+```
+
+För att köra migreringsfilen och skapa tabellen används kommandot 
+```php artisan migrate```
 
 
 ## Använda webbtjänsten
