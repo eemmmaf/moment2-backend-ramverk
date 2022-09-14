@@ -14,8 +14,8 @@ När databasen installeras skapas tabellen Podcasts. Tabellen lagrar:
 * När den har lagrats(created_at)
 * När den uppdaterades senast(updated_at)
 
-
-| Tabellnamn  | Fält |
+### Tabellen Podcasts
+| Namn  | Typ |
 | ------------- | ------------- |
 | id  | bigint(20)  |
 | name  | varchar(70)  |
@@ -46,7 +46,7 @@ Denna funktion tar bort en enskild podcast. En kontroll görs för att se om pod
 En model har skapats. Filen heter Podcast.php och den hittas i mappen Models. 
 
 ## Migrering
-En migrerings-fil har skapats. I den finns funktionen _up()_. I den skapas tabellen. 
+En migrerings-fil har skapats. I den finns funktionen _up()_. I den skapas tabellen.
 ```
  public function up()
     {
@@ -59,6 +59,9 @@ En migrerings-fil har skapats. I den finns funktionen _up()_. I den skapas tabel
             $table->timestamps();
         });
 ```
+
+För att köra migreringsfilen och skapa tabellen används kommandot 
+```php artisan migrate```
 
 
 ## Använda webbtjänsten
