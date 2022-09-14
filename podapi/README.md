@@ -9,7 +9,7 @@ När databasen installeras skapas tabellen Podcasts. Tabellen lagrar:
 * Podcastens id
 * Podcastens namn(name)
 * Vilken kategori den har, exempelvis humor/skräck(category)
-* Hur många medlemmar(members)
+* Hur många medlemmar podcasten har(members)
 * Om den kommer ut veckovis(weekly)
 * När den har lagrats(created_at)
 * När den uppdaterades senast(updated_at)
