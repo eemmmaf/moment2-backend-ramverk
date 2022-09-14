@@ -45,6 +45,20 @@ Denna funktion tar bort en enskild podcast. En kontroll görs för att se om pod
 ## Model
 En model har skapats. Filen heter Podcast.php och den hittas i mappen Models. 
 
+## Migrering
+En migrerings-fil har skapats. I den finns funktionen _up()_. I den skapas tabellen. 
+```
+ public function up()
+    {
+        Schema::create('podcasts', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 70); //Podcastens namn
+            $table->string('category', 50); //Podcastens kategori
+            $table->integer('members'); //Antal medlemmar
+            $table->boolean('weekly'); //Kommer den ut veckovis?
+            $table->timestamps();
+        });
+```
 
 
 ## Använda webbtjänsten
