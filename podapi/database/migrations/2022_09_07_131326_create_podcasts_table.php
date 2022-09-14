@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Kör migreringen.
      *
      * @return void
      */
+    //Skapar tabellen
     public function up()
     {
         Schema::create('podcasts', function (Blueprint $table) {
