@@ -26,7 +26,7 @@ class PodcastController extends Controller
      */
     public function store(Request $request)
     {
-        //Validerar och kontrollerar att allt är ifyllt. Skrivs ut ett felmeddelande om inte ifyllt allt
+        //Validerar och kontrollerar att allt är ifyllt. Skrivs ut ett felmeddelande om något inte är ifyllt. Krav på att alla fält ska vara ifyllda
         $request->validate([
             'name' => 'required',
             'category' => 'required',
@@ -46,15 +46,15 @@ class PodcastController extends Controller
      */
     public function show($id)
     {
-        //Hämtar podcast utifrån id
+        //Hämtar podcast utifrån dess id
         $podcast = Podcast::find($id);
 
-        //Kontroll om $podcast inte är lika med null
+        //Kontroll om variabeln $podcast inte är lika med null
         if ($podcast != null) {
-            //Returnerar podcast
+            //Returnerar podcasten
             return $podcast;
         } else {
-            //Skriver ut felmeddelande och felkoden 404
+            //Skriver ut felmeddelande och felkoden 404 om variabeln $podcast är null
             return response()->json([
                 'Podcasten kunde inte hittas!'
             ], 404);
@@ -62,7 +62,7 @@ class PodcastController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updaterar enskild podcast
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -73,7 +73,7 @@ class PodcastController extends Controller
         //Hämtar podcast utifrån dess id och sparar i variabeln $podcast
         $podcast = Podcast::find($id);
 
-        //Kontroll om $podcast inte är lika med null
+        //Kontroll om variabeln $podcast inte är lika med null
         if ($podcast != null) {
             //Uppdaterar 
             $podcast->update($request->all());
@@ -86,7 +86,7 @@ class PodcastController extends Controller
     }
 
     /**
-     * Tar bort podcast utifrån dess id
+     * Tar bort en podcast utifrån dess id
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
