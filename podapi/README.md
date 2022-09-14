@@ -25,7 +25,31 @@ När databasen installeras skapas tabellen Podcasts. Tabellen lagrar:
 | created_at  | timestamp  |
 | updated_at  | timestamp  |
 
+### Databas-server
+Till denna uppgift har ett plugin som heter JawsDB MySQL installerats på Heroku. 
+
+## Controller
+En controller har skapats och filen har namnet PodcastController.php. Controllern innehåller 5 funktioner. 
+### Funktioner i controllern
+#### Public function index
+Returnerar alla lagrade podcasts. 
+#### Public function store
+Funktionen lägger till en podcast. I den görs en kontroll som kollar om allting är ifyllt. 
+#### Public function show
+Denna funktion visar en utvald podcast. Där görs en kontroll ifall den eftersökta podcasten hittas eller ej. Om den inte hittas skrivs ett felmeddelande ut, annars visas den. 
+#### Public function update
+Funktionen uppdaterar utvald podcast. I den görs också en kontroll om den utvalda pocasten hittas. Felmeddelande skrivs ut om den inte hittas, annars uppdateras podcasten. 
+#### Public function destroy
+Denna funktion tar bort en enskild podcast. En kontroll görs för att se om podcasten hittas eller inte. Om den hittas tas den bort och ett meddelande skrivs ut som bekräftar borttagningen. Om den inte hittas får användaren ett felmeddelande. 
+
+## Model
+En model har skapats. Filen heter Podcast.php och den hittas i mappen Models. 
+
+
+
 ## Använda webbtjänsten
+Det går att testköra webbtjänsten. För att både hämta alla podcast och enskild podcast går det att testköra webbtjänsten direkt i webbläsaren. För att lägga till, uppdatera och ta bort en podcast går det bra att använda exempelvis Thunderclient eller Postman. 
+
 Nedan finns beskrivet hur man kan nå APIet på olika vis:
 | Metod  | Ändpunkt | Beskrivning | URL | 
 | ------------- | ------------- | ------------- | ------------- |
